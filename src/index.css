@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root { background: #0a0b0a; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Space Grotesk', sans-serif; color: #e8eae0; }
+
+.hero-heading {
+  background: linear-gradient(180deg, #e8eae0 0%, #646973 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* fixed grain overlay — low opacity, never intercepts input */
+.grain-overlay {
+  position: fixed; inset: 0; z-index: 50; pointer-events: none;
+  background-image: url('/brand/grain.png');
+  opacity: 0.06; mix-blend-mode: overlay;
+}
