@@ -36,12 +36,16 @@ export function Hero() {
         </div>
       </FadeIn>
 
-      <FadeIn delay={0.6} y={30} className="absolute left-1/2 z-10 -translate-x-1/2 top-1/2 -translate-y-1/2 sm:top-auto sm:bottom-0 sm:translate-y-0
-                                            w-[280px] sm:w-[360px] md:w-[440px] lg:w-[520px]">
-        <Magnet padding={150} strength={3}>
-          <img src="/portrait.png" alt="Ahmed Al Badry — 3D portrait" className="w-full" />
-        </Magnet>
-      </FadeIn>
+      {/* positioning lives on a static wrapper: FadeIn (motion.div) animates
+          transform and would overwrite class-based translate centering */}
+      <div className="absolute left-1/2 z-10 -translate-x-1/2 top-1/2 -translate-y-1/2 sm:top-auto sm:bottom-0 sm:translate-y-0
+                      w-[280px] sm:w-[360px] md:w-[440px] lg:w-[520px]">
+        <FadeIn delay={0.6} y={30}>
+          <Magnet padding={150} strength={3}>
+            <img src="/portrait.png" alt="Ahmed Al Badry — 3D portrait" className="w-full" />
+          </Magnet>
+        </FadeIn>
+      </div>
 
       <div className="mt-auto flex items-end justify-between px-6 pb-7 sm:pb-8 md:px-10 md:pb-10">
         <FadeIn delay={0.35} y={20}>
