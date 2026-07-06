@@ -7,12 +7,11 @@ export const programs: Program[] = [
     badge: 'Part 01', part: 'Design System', nameAccent: 'A.L.I.E.N.', name: 'Design System',
     tagline: 'From regular designer to impact-driven Alien Creator. Design, AI, storytelling, and business — so you create visuals that actually sell, not just look "nice".',
     modules: [
-      { num: '01', title: 'Think Like an Alien Designer', desc: 'mindset, strategy, STOP→FEEL→ACT' },
-      { num: '02', title: 'Visual Magnetic Technique', desc: 'focal points, composition, visual impact' },
-      { num: '03', title: 'AI-Powered Creative Workflows', desc: 'tools, prompting, production speed' },
-      { num: '04', title: 'Brand Storytelling', desc: 'narrative systems that stick' },
-      { num: '05', title: 'Client Prospecting', desc: 'finding and winning the right clients' },
-      { num: '06', title: 'Pricing & Business', desc: 'charging what your work is worth' },
+      { num: 'A', title: 'Alien Mindset', desc: 'think differently from regular designers — what makes a design sell, visual ≠ beautiful, authenticity' },
+      { num: 'L', title: 'Layout Magnetism', desc: 'composition + typography that control the eye: where it lands, where it moves, what it remembers' },
+      { num: 'I', title: 'Intelligent AI Collaboration', desc: 'AI as your alien co-pilot — prompting, curating the best images, the honest tool stack' },
+      { num: 'E', title: 'Execution in Tools', desc: 'ship real assets in Photoshop & Canva — posts, carousels, ads with alien-level finish' },
+      { num: 'N', title: 'Networking & Numbers', desc: 'niches, prospecting, pricing — clients come to you, and you charge what it\'s worth' },
     ],
   },
   {
