@@ -6,8 +6,8 @@ afterEach(() => {
 });
 
 // Polyfill IntersectionObserver for jsdom
-if (!global.IntersectionObserver) {
-  global.IntersectionObserver = class IntersectionObserver {
+if (!globalThis.IntersectionObserver) {
+  globalThis.IntersectionObserver = class IntersectionObserver {
     constructor(public callback: IntersectionObserverCallback) {}
     observe() { return null; }
     disconnect() { return null; }
