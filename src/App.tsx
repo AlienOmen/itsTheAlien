@@ -1,3 +1,4 @@
+import { Loader } from './components/Loader';
 import { Hero } from './sections/Hero';
 import { Ticker } from './components/Ticker';
 import { Marquee } from './sections/Marquee';
@@ -11,6 +12,7 @@ import { Contact } from './sections/Contact';
 export default function App() {
   return (
     <main id="top" className="bg-void" style={{ overflowX: 'clip' }}>
+      <Loader />
       <div className="grain-overlay" />
       <Hero />
       <Ticker />

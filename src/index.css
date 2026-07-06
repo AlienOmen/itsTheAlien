@@ -34,3 +34,13 @@ body { font-family: 'Space Grotesk', sans-serif; color: #e8eae0; }
   100% { transform: translateY(0) rotate(0deg); }
 }
 @media (prefers-reduced-motion: reduce) { .float-prop { animation: none; } }
+
+/* loader: radar ping + typing dots */
+.loader-ping { animation: loader-ping 1.6s cubic-bezier(0, 0, 0.2, 1) infinite; }
+@keyframes loader-ping {
+  0%   { transform: scale(0.55); opacity: 0.9; }
+  80%  { transform: scale(1.5);  opacity: 0; }
+  100% { transform: scale(1.5);  opacity: 0; }
+}
+.loader-dots::after { content: ''; animation: loader-dots 1.2s steps(4, end) infinite; }
+@keyframes loader-dots { to { content: '...'; } }
