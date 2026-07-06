@@ -27,22 +27,24 @@ export function Hero() {
         </nav>
       </FadeIn>
 
-      <FadeIn delay={0.15} y={40}>
-        <div className="overflow-hidden">
-          <h1 className="hero-heading w-full whitespace-nowrap text-center font-display font-black uppercase leading-none tracking-tight
-                         text-[13vw] sm:text-[13.5vw] md:text-[14vw]">
+      {/* giant type fills the hero as a backdrop layer */}
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden">
+        <FadeIn delay={0.15} y={40}>
+          <h1 className="hero-heading whitespace-nowrap text-center font-display font-black uppercase leading-none tracking-tight
+                         text-[16vw] sm:text-[16.5vw] md:text-[17vw]">
             it&rsquo;s the alien
           </h1>
-        </div>
-      </FadeIn>
+        </FadeIn>
+      </div>
 
-      {/* positioning lives on a static wrapper: FadeIn (motion.div) animates
+      {/* portrait floats IN FRONT of the type, chasing the cursor.
+          positioning lives on a static wrapper: FadeIn (motion.div) animates
           transform and would overwrite class-based translate centering */}
-      <div className="absolute left-1/2 z-10 -translate-x-1/2 top-1/2 -translate-y-1/2 sm:top-auto sm:bottom-0 sm:translate-y-0
-                      w-[280px] sm:w-[360px] md:w-[440px] lg:w-[520px]">
+      <div className="absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-[42%]
+                      w-[260px] sm:w-[330px] md:w-[400px] lg:w-[460px]">
         <FadeIn delay={0.6} y={30}>
-          <Magnet padding={150} strength={3}>
-            <img src="/portrait.png" alt="Ahmed Al Badry — 3D portrait" className="w-full" />
+          <Magnet padding={220} strength={2.4}>
+            <img src="/portrait.png" alt="Ahmed Al Badry — 3D portrait" className="w-full drop-shadow-[0_30px_60px_rgba(0,0,0,0.75)]" />
           </Magnet>
         </FadeIn>
       </div>
