@@ -1,5 +1,4 @@
 import { motion, useTransform, type MotionValue } from 'framer-motion';
-import { GhostButton } from './GhostButton';
 import type { Project } from '../data/projects';
 
 interface Props {
@@ -7,9 +6,10 @@ interface Props {
   index: number;
   total: number;
   progress: MotionValue<number>;
+  onOpen: (slug: string) => void;
 }
 
-export function StickyProjectCard({ project, index, total, progress }: Props) {
+export function StickyProjectCard({ project, index, total, progress, onOpen }: Props) {
   const targetScale = 1 - (total - 1 - index) * 0.03;
   const scale = useTransform(progress, [index / total, 1], [1, targetScale]);
 
@@ -33,7 +33,15 @@ export function StickyProjectCard({ project, index, total, progress }: Props) {
               <p className="mt-1 font-mono text-xs uppercase tracking-widest text-acid">{project.result}</p>
             </div>
           </div>
-          <GhostButton href={project.url} label="View Project" />
+          <button
+            type="button"
+            onClick={() => onOpen(project.slug)}
+            className="inline-block rounded-full border-2 border-bone font-mono font-medium uppercase
+                       tracking-widest text-bone px-8 py-3 sm:px-10 sm:py-3.5 text-sm sm:text-base
+                       transition-colors duration-200 hover:bg-bone/10"
+          >
+            View Case Study
+          </button>
         </div>
         <div className="grid min-h-0 flex-1 grid-cols-[40%_1fr] gap-4">
           <div className="flex flex-col gap-4">
