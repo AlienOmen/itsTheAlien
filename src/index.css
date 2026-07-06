@@ -19,3 +19,7 @@ body { font-family: 'Space Grotesk', sans-serif; color: #e8eae0; }
   background-image: url('/brand/grain.png');
   opacity: 0.06; mix-blend-mode: overlay;
 }
+
+/* ticker track animation */
+.ticker-track { animation: ticker 40s linear infinite; width: max-content; }
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
