@@ -44,3 +44,11 @@ body { font-family: 'Space Grotesk', sans-serif; color: #e8eae0; }
 }
 .loader-dots::after { content: ''; animation: loader-dots 1.2s steps(4, end) infinite; }
 @keyframes loader-dots { to { content: '...'; } }
+
+/* starfield twinkle */
+.star { animation-name: star-twinkle; animation-timing-function: ease-in-out; animation-iteration-count: infinite; }
+@keyframes star-twinkle {
+  0%, 100% { opacity: 0.15; }
+  50%      { opacity: 0.85; }
+}
+@media (prefers-reduced-motion: reduce) { .star { animation: none; } }

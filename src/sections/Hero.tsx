@@ -1,6 +1,7 @@
 import { FadeIn } from '../components/FadeIn';
 import { Magnet } from '../components/Magnet';
 import { ContactButton } from '../components/ContactButton';
+import { Starfield } from '../components/Starfield';
 import { copy } from '../data/copy';
 
 const NAV = [
@@ -13,6 +14,7 @@ const NAV = [
 export function Hero() {
   return (
     <section className="relative flex h-screen flex-col" style={{ overflowX: 'clip' }}>
+      <Starfield />
       <FadeIn delay={0} y={-20}>
         <nav className="flex items-center justify-between px-6 pt-6 md:px-10 md:pt-8">
           <a href="#top"><img src="/brand/logo-mark.png" alt="it's The Alien" className="h-9 w-auto md:h-11" /></a>
