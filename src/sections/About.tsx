@@ -11,13 +11,15 @@ function CountUp({ target, suffix }: { target: number; suffix: string }) {
   const [n, setN] = useState(0);
   useEffect(() => {
     if (!inView) return;
+    let raf = 0;
     const t0 = performance.now();
     const tick = (t: number) => {
       const p = Math.min(1, (t - t0) / 1200);
       setN(Math.round(target * p));
-      if (p < 1) requestAnimationFrame(tick);
+      if (p < 1) raf = requestAnimationFrame(tick);
     };
-    requestAnimationFrame(tick);
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
   }, [inView, target]);
   return <span ref={ref}>{n}{suffix}</span>;
 }
