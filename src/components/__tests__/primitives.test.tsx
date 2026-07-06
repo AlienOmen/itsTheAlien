@@ -13,8 +13,10 @@ describe('motion primitives', () => {
     render(<Magnet><img alt="portrait" src="/portrait.png" /></Magnet>);
     expect(screen.getByAltText('portrait')).toBeTruthy();
   });
-  it('AnimatedText renders every character', () => {
+  it('AnimatedText renders every character as placeholder + animated overlay', () => {
     const { container } = render(<AnimatedText text="abc" />);
-    expect(container.textContent?.replace(/\s/g, '')).toContain('abc');
+    const placeholders = Array.from(container.querySelectorAll('span.opacity-20'));
+    expect(placeholders.map((s) => s.textContent).join('')).toBe('abc');
+    expect(container.querySelectorAll('span.absolute')).toHaveLength(3);
   });
 });

@@ -4,9 +4,10 @@ import { motion, useScroll, useTransform, type MotionValue } from 'framer-motion
 function Char({ char, progress, range }: { char: string; progress: MotionValue<number>; range: [number, number] }) {
   const opacity = useTransform(progress, range, [0.2, 1]);
   return (
-    <motion.span style={{ opacity }}>
-      {char}
-    </motion.span>
+    <span className="relative inline">
+      <span className="opacity-20">{char}</span>
+      <motion.span style={{ opacity }} className="absolute left-0">{char}</motion.span>
+    </span>
   );
 }
 
