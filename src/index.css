@@ -23,3 +23,14 @@ body { font-family: 'Space Grotesk', sans-serif; color: #e8eae0; }
 /* ticker track animation */
 .ticker-track { animation: ticker 40s linear infinite; width: max-content; }
 @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* weightless idle drift for the clay props; duration/delay staggered inline */
+.float-prop { animation-name: float-drift; animation-timing-function: ease-in-out; animation-iteration-count: infinite; will-change: transform; }
+@keyframes float-drift {
+  0%   { transform: translateY(0) rotate(0deg); }
+  25%  { transform: translateY(-12px) rotate(1.5deg); }
+  50%  { transform: translateY(2px) rotate(-1deg); }
+  75%  { transform: translateY(-8px) rotate(0.8deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+@media (prefers-reduced-motion: reduce) { .float-prop { animation: none; } }

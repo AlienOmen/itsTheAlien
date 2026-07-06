@@ -25,10 +25,10 @@ function CountUp({ target, suffix }: { target: number; suffix: string }) {
 }
 
 const DECOS = [
-  { src: '/brand/deco-1.png', cls: 'top-[4%] left-[1%] sm:left-[2%] md:left-[4%] w-[120px] sm:w-[160px] md:w-[210px]', delay: 0.1, x: -80 },
-  { src: '/brand/deco-2.png', cls: 'bottom-[8%] left-[3%] sm:left-[6%] md:left-[10%] w-[100px] sm:w-[140px] md:w-[180px]', delay: 0.25, x: -80 },
-  { src: '/brand/deco-3.png', cls: 'top-[4%] right-[1%] sm:right-[2%] md:right-[4%] w-[120px] sm:w-[160px] md:w-[210px]', delay: 0.15, x: 80 },
-  { src: '/brand/deco-4.png', cls: 'bottom-[8%] right-[3%] sm:right-[6%] md:right-[10%] w-[130px] sm:w-[170px] md:w-[220px]', delay: 0.3, x: 80 },
+  { src: '/brand/deco-1.png', cls: 'top-[4%] left-[1%] sm:left-[2%] md:left-[4%] w-[120px] sm:w-[160px] md:w-[210px]', delay: 0.1, x: -80, float: { duration: '7s', delay: '0s' } },
+  { src: '/brand/deco-2.png', cls: 'bottom-[8%] left-[3%] sm:left-[6%] md:left-[10%] w-[100px] sm:w-[140px] md:w-[180px]', delay: 0.25, x: -80, float: { duration: '9s', delay: '-3s' } },
+  { src: '/brand/deco-3.png', cls: 'top-[4%] right-[1%] sm:right-[2%] md:right-[4%] w-[120px] sm:w-[160px] md:w-[210px]', delay: 0.15, x: 80, float: { duration: '8s', delay: '-5s' } },
+  { src: '/brand/deco-4.png', cls: 'bottom-[8%] right-[3%] sm:right-[6%] md:right-[10%] w-[130px] sm:w-[170px] md:w-[220px]', delay: 0.3, x: 80, float: { duration: '10s', delay: '-7s' } },
 ];
 
 export function About() {
@@ -36,7 +36,8 @@ export function About() {
     <section id="about" className="relative flex min-h-screen flex-col items-center justify-center gap-10 px-5 py-20 sm:gap-14 sm:px-8 md:gap-16 md:px-10">
       {DECOS.map((d) => (
         <FadeIn key={d.src} delay={d.delay} x={d.x} y={0} duration={0.9} className={`absolute ${d.cls}`}>
-          <img src={d.src} alt="" className="w-full" loading="lazy" />
+          <img src={d.src} alt="" className="float-prop w-full" loading="lazy"
+               style={{ animationDuration: d.float.duration, animationDelay: d.float.delay }} />
         </FadeIn>
       ))}
       <FadeIn y={40}>
