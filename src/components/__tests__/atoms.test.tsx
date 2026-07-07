@@ -5,10 +5,11 @@ import { GhostButton } from '../GhostButton';
 import { Ticker } from '../Ticker';
 
 describe('UI atoms', () => {
-  it('ContactButton defaults to #contact with Contact Me label', () => {
+  it('ContactButton defaults to the WhatsApp line, opening in a new tab', () => {
     render(<ContactButton />);
     const a = screen.getByRole('link', { name: /contact me/i });
-    expect(a.getAttribute('href')).toBe('#contact');
+    expect(a.getAttribute('href')).toContain('wa.me/201141430050');
+    expect(a.getAttribute('target')).toBe('_blank');
   });
   it('GhostButton opens external link in new tab', () => {
     render(<GhostButton href="https://example.com" label="View Project" />);

@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import { FadeIn } from '../components/FadeIn';
 import { Magnet } from '../components/Magnet';
 import { ContactButton } from '../components/ContactButton';
@@ -12,8 +13,9 @@ const NAV = [
 ];
 
 export function Hero() {
+  const heroRef = useRef<HTMLElement>(null);
   return (
-    <section className="relative flex h-screen flex-col" style={{ overflowX: 'clip' }}>
+    <section ref={heroRef} className="relative flex h-screen flex-col" style={{ overflowX: 'clip' }}>
       <Starfield />
       <FadeIn delay={0} y={-20}>
         <nav className="flex items-center justify-between px-6 pt-6 md:px-10 md:pt-8">
@@ -45,7 +47,7 @@ export function Hero() {
       <div className="absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-[42%]
                       w-[260px] sm:w-[330px] md:w-[400px] lg:w-[460px]">
         <FadeIn delay={0.6} y={30}>
-          <Magnet padding={220} strength={2.4}>
+          <Magnet boundsRef={heroRef} strength={4} maxTravel={170}>
             <img src="/portrait.png" alt="Ahmed Al Badry — 3D portrait" className="w-full drop-shadow-[0_30px_60px_rgba(0,0,0,0.75)]" />
           </Magnet>
         </FadeIn>

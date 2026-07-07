@@ -9,12 +9,16 @@ export interface CaseStudy {
   problem: string;
   insight: string;
   concept: string;
+  moodboard: string;
+  keyDecisions: string[];
   execution: string;
   impact: string[];
   learning: string;
   tags: string[];
-  /** shown inside the overlay, in order */
-  gallery: string[];
+  /** page-1 image — used as the card image AND the overlay cover */
+  hero: string;
+  /** page-3 images — the showcase set (main + supporting bands) */
+  showcase: string[];
 }
 
 export const caseStudies: CaseStudy[] = [
@@ -29,6 +33,14 @@ export const caseStudies: CaseStudy[] = [
     problem: "Consumers were actively seeking Egyptian alternatives, but didn't yet think of fashion as a place to express that. Foreign brands still owned the perception of “style.” Arafa didn't need more visibility — it needed to redefine what “style” looks like, locally.",
     insight: "The boycott isn't about what you stop buying — it's about what you start being proud of.",
     concept: '“100 MILLION STYLE” — every Egyptian is a style icon. Not the model. Not the campaign. You.',
+    moodboard: 'Monumental Arabic typography as a visual anchor. Clean studio compositions with controlled negative space. Diverse Egyptian casting across every age. A fully saturated red field used as a cultural force, not decoration.',
+    keyDecisions: [
+      "Typography — bold Arabic sans at monumental scale. Arabic leads, English follows. The type isn't supporting the visual; it IS the visual.",
+      'Casting — real Egyptians from baby to grandparent, not models. Diversity was the message.',
+      'Palette — a saturated red environment as a unifying cultural field, never decoration.',
+      'Photography — controlled studio lighting, every subject cleanly separated from the background.',
+      'Layout — subjects spaced across the frame with presence, not hierarchy; typography cuts through and connects them into one statement.',
+    ],
     execution: 'Deployed across TV spots, OOH in 10 premium Cairo locations (Ring Road, 6th October, New Cairo), radio on 4 national stations, and a social competition inviting Egyptians to post their own “100 Million Style” looks.',
     impact: [
       '+20 million impressions across platforms',
@@ -39,7 +51,8 @@ export const caseStudies: CaseStudy[] = [
     ],
     learning: "In a cultural moment, don't sell — celebrate. The campaigns that tried to defend “buy local” felt political. The one that celebrated people felt human. That's what made it spread.",
     tags: ['360° Campaign', 'OOH', 'TV', 'Radio', 'Social', 'Arabic Typography'],
-    gallery: ['/work/arafa-1.jpg', '/case/arafa-exec.jpg', '/work/arafa-2.jpg', '/work/arafa-3.jpg'],
+    hero: '/case/arafa-hero.jpg',
+    showcase: ['/case/arafa-show.jpg', '/case/arafa-strip1.jpg', '/case/arafa-strip2.jpg', '/case/arafa-strip3.jpg'],
   },
   {
     slug: 'instapay',
@@ -48,11 +61,19 @@ export const caseStudies: CaseStudy[] = [
     tagline: 'Making instant payments feel natural in everyday life.',
     client: "InstaPay — flagship app of Egypt's Instant Payment Network (IPN), operated by the Egyptian Banks Company under CBE.",
     brief: "InstaPay had already scaled — 12M+ users and 1.5B+ transactions. The challenge wasn't growth. It was behavior: how do you make mass users stop defaulting to cash?",
-    role: 'Art Director, Campaign Creative — led the visual system, casting direction, and AI-driven photography approach across all campaign scenarios and platforms.',
+    role: 'Art Director, Campaign Creative — led the visual system, casting direction, and AI-driven photography approach across all scenarios and platforms.',
     problem: "Cash isn't just a payment method in Egypt — it's a habit. Digital payments still felt distant, not built for them. Making InstaPay feel premium would alienate the mass; making it feel cheap would break trust.",
     insight: "The obstacle isn't understanding InstaPay — it's feeling like it belongs to them. People don't adopt tools. They adopt what feels familiar.",
     concept: '“w INGEZ” (وانجز — “and get it done”). A phrase from everyday Egyptian life, not a banking slogan. Short. Direct. Already owned by the people.',
-    execution: 'Multi-market rollout: TV, Digital OOH, YouTube, Instagram, Facebook, TikTok. All assets adapted across EN/AR with RTL typography and Arabic-first hierarchy. Print-ready and social-native versions produced in parallel.',
+    moodboard: 'Everyday Egyptian micro-moments — café transfers, a gamer mid-session, friends splitting a bill, cash hesitation. Warm human lighting, cinematic colour grading, high-contrast Arabic type.',
+    keyDecisions: [
+      'Casting — real people across ages and lifestyles. Not actors — people you recognize instantly.',
+      'Typography — bold, high-contrast Arabic headlines, readable in a second even in motion-heavy scenes.',
+      'Palette — InstaPay purple with warm Egyptian skin tones and ambient light. No corporate fintech blues.',
+      'Composition — the phone is always in-hand, never isolated. Humans lead, the app follows.',
+      "Copy rhythm — every headline ends with “w INGEZ.” The phrase becomes the rhythm, and the brand.",
+    ],
+    execution: 'Multi-market rollout: TV, Digital OOH, YouTube, Instagram, Facebook, TikTok. All assets adapted across EN/AR with RTL typography and Arabic-first hierarchy. Print-ready and social-native versions in parallel.',
     impact: [
       '12.5M+ users supported across the platform',
       'Visual system scalable across real-life scenarios',
@@ -61,7 +82,8 @@ export const caseStudies: CaseStudy[] = [
     ],
     learning: "The challenge wasn't design — it was restraint. We didn't need it to look “premium.” We needed it to feel real. AI didn't replace the craft — it gave us control over it.",
     tags: ['Fintech', 'Mass Campaign', 'OOH', 'Digital', 'Arabic Typography'],
-    gallery: ['/work/instapay-1.jpg', '/case/instapay-exec.jpg', '/work/instapay-2.jpg', '/work/instapay-3.jpg'],
+    hero: '/case/instapay-hero.jpg',
+    showcase: ['/case/instapay-show.jpg', '/case/instapay-strip1.jpg', '/case/instapay-strip2.jpg', '/case/instapay-strip3.jpg'],
   },
   {
     slug: 'pretzo',
@@ -74,6 +96,14 @@ export const caseStudies: CaseStudy[] = [
     problem: "Traditional food photography is expensive and slow: $15–25K, weeks of production, full studio crews. Pretzo had neither the budget nor the time — and stock imagery felt generic, killing the brand's premium perception.",
     insight: "AI isn't replacing photography — it's replacing the parts that were always the bottleneck: location, lighting setup, and retakes.",
     concept: 'A hybrid workflow that keeps the product real and makes everything else synthetic — so the AI serves craft, not the other way around.',
+    moodboard: 'Food editorial · Kinfolk styling · golden-hour kitchen light · real Egyptian tables · imperfect tablecloths · no studio sterility.',
+    keyDecisions: [
+      'The product is always real — never generated.',
+      'AI builds the environments, props, and context — never the hero.',
+      'Every scene is art-directed, not auto-generated.',
+      'Consistency is controlled across all outputs.',
+      'Workflow: Define → Generate → Direct → Compose → Polish.',
+    ],
     execution: 'Deployed across multiple product scenarios — hero shots to fully constructed lifestyle scenes. Each visual built through a controlled pipeline: real product integration, AI-generated environments, final compositing. Different scenes. Same system.',
     impact: [
       'Full photography suite at ~15% of traditional cost',
@@ -83,7 +113,8 @@ export const caseStudies: CaseStudy[] = [
     ],
     learning: "The real innovation wasn't the AI — it was how you direct it. The tools are accessible. Taste isn't.",
     tags: ['AI', 'Photography', 'Innovation', 'F&B', 'Workflow Design'],
-    gallery: ['/work/pretzo-1.jpg', '/case/pretzo-exec.jpg', '/work/pretzo-2.jpg', '/work/pretzo-3.jpg'],
+    hero: '/case/pretzo-hero.jpg',
+    showcase: ['/case/pretzo-show.jpg', '/case/pretzo-strip1.jpg', '/case/pretzo-strip2.jpg', '/case/pretzo-strip3.jpg'],
   },
   {
     slug: 'sparx',
@@ -95,8 +126,16 @@ export const caseStudies: CaseStudy[] = [
     role: 'Visual Direction, System Design & Design Oversight — led identity development, packaging architecture, and the flavour extension system.',
     problem: "New soda brands fail fast. Shelf presence is everything. If the system isn't flexible, every new flavour looks like a different brand. If it's too flexible, nothing feels distinct.",
     insight: "A soda brand isn't a label — it's a system. Get the structure right, and every new flavour becomes an extension, not a redesign.",
-    concept: "A bold, bubbly 'X' — built from fizz physics. Each variant expresses its own identity through color and ingredients, while the structure remains constant.",
-    execution: 'Delivered: primary logo + monogram, 3 launch flavour packaging SKUs, extension framework for future flavours, brand toolkit (type, colour, motion rules), and social launch assets.',
+    concept: "A bold, bubbly 'X' — built from fizz physics. Each variant expresses its own identity through color and ingredients, while the structure stays constant.",
+    moodboard: 'Modern beverage branding · soft gradient layering · organic fruit-inspired visuals · bubble-inspired abstract forms · a clean, approachable FMCG aesthetic.',
+    keyDecisions: [
+      "Logo — the 'X' as a flexible brand anchor.",
+      'Color — distinct palettes per flavour within one controlled structure.',
+      'Typography — clean, modern, highly legible.',
+      'Visual language — layered gradients and organic shapes.',
+      'Hierarchy — brand first, flavour second.',
+    ],
+    execution: 'Delivered: primary logo + monogram, 3 launch flavour packaging SKUs, an extension framework for future flavours, brand toolkit (type, colour, motion rules), and social launch assets.',
     impact: [
       'Complete brand system built from zero',
       'Three distinct flavours within one cohesive identity',
@@ -105,7 +144,8 @@ export const caseStudies: CaseStudy[] = [
     ],
     learning: 'A strong brand system reduces complexity. When the structure is right, every new execution becomes faster, clearer, and more consistent.',
     tags: ['Branding', 'Packaging', 'FMCG', 'System Thinking', 'Identity'],
-    gallery: ['/work/sparx-1.jpg', '/case/sparx-exec.jpg', '/work/sparx-2.jpg', '/work/sparx-3.jpg'],
+    hero: '/case/sparx-hero.jpg',
+    showcase: ['/case/sparx-show.jpg', '/case/sparx-strip1.jpg', '/case/sparx-strip2.jpg', '/case/sparx-strip3.jpg'],
   },
   {
     slug: 'greenpan',
@@ -118,6 +158,12 @@ export const caseStudies: CaseStudy[] = [
     problem: "Used oil disposal is invisible. It feels boring and not urgent. Most campaigns talk at people — and get ignored. The audience needed a story they couldn't look away from.",
     insight: "People don't act because they're told to. They act when they see themselves in the story — moving from witness, to accused, to hero.",
     concept: 'A three-act narrative built on visual escalation: miniature crime scenes → identifying the culprit (“البايظ”) → elevating the solution into a hero.',
+    moodboard: "Miniature forensic crime scenes — CSI-inspired setups at micro scale. Oil stains and clogged pipes treated as 'evidence.' Yellow caution tape, numbered markers, controlled lighting.",
+    keyDecisions: [
+      'Act 1 — CRIME: miniature forensic scenes, macro-lens realism, evidence markers, high-contrast light.',
+      "Act 2 — CULPRIT: an illustrated character (“البايظ”) bridging education and storytelling.",
+      'Act 3 — HERO: cinematic product framing, warm light, aspirational tone.',
+    ],
     execution: 'Rolled out across social and digital with sequencing logic: CRIME first, CULPRIT second, HERO third. Carrefour retail tie-ins drove drop-off points. Every crime scene was physically built as a miniature — scale contrast between a small habit and a big problem.',
     impact: [
       'Three-act narrative deployed across social and digital',
@@ -127,7 +173,8 @@ export const caseStudies: CaseStudy[] = [
     ],
     learning: "People don't act when they're instructed. They act when they see themselves in the story. Turn them into the hero — and they respond.",
     tags: ['Social Impact', 'Campaign', 'Storytelling', 'FMCG', '3-Act Narrative'],
-    gallery: ['/work/greenpan-1.jpg', '/case/greenpan-exec.jpg', '/work/greenpan-2.jpg', '/work/greenpan-3.jpg'],
+    hero: '/case/greenpan-hero.jpg',
+    showcase: ['/case/greenpan-show.jpg', '/case/greenpan-strip1.jpg', '/case/greenpan-strip2.jpg', '/case/greenpan-strip3.jpg'],
   },
   {
     slug: 'jaguar',
@@ -140,6 +187,14 @@ export const caseStudies: CaseStudy[] = [
     problem: "Every snack brand is loud. Bold colours and oversized logos are expected — not distinctive. The category competes on price and distribution, not meaning. Jaguar needed something competitors couldn't discount: a personality.",
     insight: "You can't out-shout this category. You can out-feel it. Brands that own a reaction — not a colour — are the ones people remember.",
     concept: 'Build the brand around one iconic reaction: إيه ده؟! — “What is this?!” A raw, involuntary moment of surprise. Every asset builds toward it. Every asset lands on it.',
+    moodboard: '90s Nickelodeon energy · collage maximalism · hyperspace motion lines · surreal product scenes · comic reaction panels · exaggerated expression photography.',
+    keyDecisions: [
+      'Visual vocabulary — real photography + collage + floating snack elements. Never static, never clean.',
+      'Typography — bold, unstable display. The type always reacts, never sits still.',
+      'Colour — aggressive gradients per flavour. Loud, but controlled chaos.',
+      'Scene logic — unexpected human/animal/surreal interactions → build tension → punchline.',
+      'Content rule — scroll-stopping within 0.5 seconds. No passive frames.',
+    ],
     execution: 'A modular content system built for speed and scale. Scenes designed as repeatable templates — each built around tension, surprise, and reaction. Photography, collage, and motion combined into exaggerated, impossible moments native to youth culture.',
     impact: [
       'Distinctive identity in a visually saturated category',
@@ -149,7 +204,8 @@ export const caseStudies: CaseStudy[] = [
     ],
     learning: "Building a brand around emotion is harder than building one around aesthetics. But it's the only thing competitors can't copy — and the only thing price can't kill.",
     tags: ['FMCG', 'Brand Identity', 'Creative System', 'Social', 'Art Direction'],
-    gallery: ['/work/jaguar-1.jpg', '/case/jaguar-exec.jpg', '/work/jaguar-2.jpg', '/work/jaguar-3.jpg'],
+    hero: '/case/jaguar-hero.jpg',
+    showcase: ['/case/jaguar-show.jpg', '/case/jaguar-strip1.jpg', '/case/jaguar-strip2.jpg', '/case/jaguar-strip3.jpg'],
   },
 ];
 

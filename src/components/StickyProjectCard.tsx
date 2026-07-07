@@ -1,4 +1,5 @@
 import { motion, useTransform, type MotionValue } from 'framer-motion';
+import { ArrowUpRight } from 'lucide-react';
 import type { Project } from '../data/projects';
 
 interface Props {
@@ -15,56 +16,47 @@ export function StickyProjectCard({ project, index, total, progress, onOpen }: P
 
   return (
     <div className="h-[85vh]" style={{ position: 'sticky', top: `calc(6rem + ${index * 28}px)` }}>
-      <motion.div
+      <motion.button
+        type="button"
+        onClick={() => onOpen(project.slug)}
         style={{ scale }}
-        className="flex h-full flex-col gap-6 rounded-[40px] border-2 border-bone/80 bg-void p-4 sm:rounded-[50px] sm:p-6 md:rounded-[60px] md:p-8"
+        className="group relative block h-full w-full overflow-hidden rounded-[40px] border-2 border-bone/80 bg-void text-left sm:rounded-[50px] md:rounded-[60px]"
       >
-        <div className="flex flex-wrap items-start justify-between gap-4">
-          <div className="flex items-start gap-6">
-            <span
-              className="hero-heading font-display font-black leading-none"
-              style={{ fontSize: 'clamp(3rem, 10vw, 140px)' }}
-            >
+        {/* single hero image fills the card */}
+        <img
+          src={project.image}
+          alt={project.title}
+          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+        {/* legibility gradient */}
+        <div className="absolute inset-0 bg-gradient-to-t from-void via-void/40 to-transparent" />
+
+        <div className="relative flex h-full flex-col justify-between p-6 sm:p-8 md:p-10">
+          <div className="flex items-start justify-between">
+            <span className="hero-heading font-display font-black leading-none drop-shadow-lg"
+                  style={{ fontSize: 'clamp(3rem, 9vw, 120px)' }}>
               {project.num}
             </span>
-            <div className="pt-2">
-              <p className="font-mono text-xs uppercase tracking-[0.3em] text-ash">{project.category}</p>
-              <h3 className="mt-1 font-body text-xl font-medium uppercase sm:text-2xl md:text-3xl">{project.title}</h3>
-              <p className="mt-1 font-mono text-xs uppercase tracking-widest text-acid">{project.result}</p>
-            </div>
+            <span className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-bone/70 text-bone
+                             transition-colors duration-300 group-hover:border-acid group-hover:bg-acid group-hover:text-void md:h-14 md:w-14">
+              <ArrowUpRight className="h-5 w-5" />
+            </span>
           </div>
-          <button
-            type="button"
-            onClick={() => onOpen(project.slug)}
-            className="inline-block rounded-full border-2 border-bone font-mono font-medium uppercase
-                       tracking-widest text-bone px-8 py-3 sm:px-10 sm:py-3.5 text-sm sm:text-base
-                       transition-colors duration-200 hover:bg-bone/10"
-          >
-            View Case Study
-          </button>
-        </div>
-        <div className="grid min-h-0 flex-1 grid-cols-[40%_1fr] gap-4">
-          <div className="flex flex-col gap-4">
-            <img
-              src={project.images[0]}
-              alt={`${project.title} 1`}
-              className="w-full rounded-[40px] object-cover sm:rounded-[50px] md:rounded-[60px]"
-              style={{ height: 'clamp(130px, 16vw, 230px)' }}
-            />
-            <img
-              src={project.images[1]}
-              alt={`${project.title} 2`}
-              className="w-full rounded-[40px] object-cover sm:rounded-[50px] md:rounded-[60px]"
-              style={{ height: 'clamp(160px, 22vw, 340px)' }}
-            />
+
+          <div>
+            <p className="font-mono text-xs uppercase tracking-[0.3em] text-ash">{project.category}</p>
+            <h3 className="mt-2 font-display uppercase leading-none" style={{ fontSize: 'clamp(1.6rem, 4vw, 3.2rem)' }}>
+              {project.title}
+            </h3>
+            <p className="mt-2 font-mono text-xs uppercase tracking-widest text-acid">{project.result}</p>
+            <p className="mt-3 max-w-xl font-body text-sm leading-relaxed text-bone/80">{project.desc}</p>
+            <span className="mt-5 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.3em] text-bone
+                             transition-colors group-hover:text-acid">
+              View Case Study <ArrowUpRight className="h-3.5 w-3.5" />
+            </span>
           </div>
-          <img
-            src={project.images[2]}
-            alt={`${project.title} 3`}
-            className="h-full min-h-0 w-full rounded-[40px] object-cover sm:rounded-[50px] md:rounded-[60px]"
-          />
         </div>
-      </motion.div>
+      </motion.button>
     </div>
   );
 }

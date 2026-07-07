@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { useScroll } from 'framer-motion';
+import { useScroll, AnimatePresence } from 'framer-motion';
 import { FadeIn } from '../components/FadeIn';
 import { StickyProjectCard } from '../components/StickyProjectCard';
 import { CaseStudyOverlay } from '../components/CaseStudyOverlay';
@@ -50,7 +50,9 @@ export function Projects() {
         </div>
       </div>
 
-      {active && <CaseStudyOverlay study={active} onClose={() => setActiveSlug(null)} />}
+      <AnimatePresence>
+        {active && <CaseStudyOverlay key={active.slug} study={active} onClose={() => setActiveSlug(null)} />}
+      </AnimatePresence>
     </section>
   );
 }

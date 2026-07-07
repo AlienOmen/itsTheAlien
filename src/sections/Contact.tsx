@@ -1,3 +1,4 @@
+import { MessageCircle } from 'lucide-react';
 import { FadeIn } from '../components/FadeIn';
 import { GhostButton } from '../components/GhostButton';
 import { copy } from '../data/copy';
@@ -17,14 +18,19 @@ export function Contact() {
         </FadeIn>
         <FadeIn delay={0.2}>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-            <a href={copy.links.portfolio} target="_blank" rel="noopener noreferrer"
-               className="inline-block rounded-full bg-acid px-10 py-3.5 font-mono font-medium uppercase tracking-widest text-void">
-              View Portfolio
+            <a href={copy.links.whatsapp} target="_blank" rel="noopener noreferrer"
+               className="inline-flex items-center gap-2 rounded-full bg-acid px-10 py-3.5 font-mono font-medium uppercase tracking-widest text-void
+                          transition-shadow duration-300 hover:shadow-[0_0_28px_rgba(200,255,0,0.45)]">
+              <MessageCircle className="h-4 w-4" /> Chat on WhatsApp
             </a>
+            <GhostButton href={copy.links.portfolioPdf} label="View Portfolio" />
             <GhostButton href={copy.links.linkedin} label="LinkedIn" />
             <GhostButton href={copy.links.behance} label="Behance" />
             <GhostButton href={copy.links.instagram} label="Instagram" />
           </div>
+          <p className="mt-6 font-mono text-xs uppercase tracking-[0.3em] text-ash">
+            Direct line · <a href={copy.links.whatsapp} target="_blank" rel="noopener noreferrer" className="text-acid hover:underline">+20 114 143 0050</a>
+          </p>
         </FadeIn>
       </div>
       <footer className="mt-24 flex flex-col items-center gap-3 border-t border-line pt-8 font-mono text-xs uppercase tracking-widest text-faint">

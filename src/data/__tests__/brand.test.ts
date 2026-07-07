@@ -16,17 +16,20 @@ describe('brand rules', () => {
   it('never uses the word outsider', () => {
     expect(allText.toLowerCase()).not.toContain('outsider');
   });
-  it('has exactly 6 projects with 3 images each and a matching case study', () => {
+  it('has exactly 6 projects, each with a single hero image and a matching case study', () => {
     expect(projects).toHaveLength(6);
     const slugs = caseStudies.map((c) => c.slug);
     projects.forEach((p) => {
-      expect(p.images).toHaveLength(3);
+      expect(p.image).toMatch(/^\/case\/.+\.jpg$/);
       expect(slugs).toContain(p.slug);
     });
   });
-  it('every case study has 4 gallery images, impact bullets, and tags', () => {
+  it('every case study has a page-1 hero, page-3 showcase, key decisions, moodboard, impact and tags', () => {
     caseStudies.forEach((c) => {
-      expect(c.gallery).toHaveLength(4);
+      expect(c.hero).toMatch(/^\/case\/.+-hero\.jpg$/);
+      expect(c.showcase.length).toBeGreaterThanOrEqual(2);
+      expect(c.keyDecisions.length).toBeGreaterThanOrEqual(3);
+      expect(c.moodboard.length).toBeGreaterThan(20);
       expect(c.impact.length).toBeGreaterThanOrEqual(3);
       expect(c.tags.length).toBeGreaterThanOrEqual(3);
     });

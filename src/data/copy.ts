@@ -10,7 +10,9 @@ export const copy = {
     { target: 75, suffix: '+', label: 'Projects Delivered' },
   ],
   links: {
-    portfolio: 'https://itsthealien.myportfolio.com/',
+    // downloadable PDF portfolio hosted on Google Drive
+    portfolioPdf: 'https://drive.google.com/uc?export=download&id=1EQZ750au3Z3QtMiGg57d9XfHT01qmaJy',
+    whatsapp: 'https://wa.me/201141430050?text=Hi%20Ahmed%20%E2%80%94%20I%20saw%20your%20site%20and%20I%27d%20love%20to%20talk.',
     linkedin: 'https://www.linkedin.com/in/itsthealien/',
     behance: 'https://behance.net/itsTheAlien',
     instagram: 'https://www.instagram.com/its_thealien/',
