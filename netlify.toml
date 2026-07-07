@@ -1,0 +1,13 @@
+# site is the repo root when deployed via GitHub (subtree push)
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# SPA-safe: everything resolves to the single index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
