@@ -14,8 +14,12 @@ export function StickyProjectCard({ project, index, total, progress, onOpen }: P
   const targetScale = 1 - (total - 1 - index) * 0.03;
   const scale = useTransform(progress, [index / total, 1], [1, targetScale]);
 
+  const isLast = index === total - 1;
   return (
-    <div className="h-[85vh]" style={{ position: 'sticky', top: `calc(6rem + ${index * 28}px)` }}>
+    <div
+      className={isLast ? '' : 'mb-[30vh]'}
+      style={{ position: 'sticky', top: `calc(5rem + ${index * 24}px)`, height: '80vh' }}
+    >
       <motion.button
         type="button"
         onClick={() => onOpen(project.slug)}
