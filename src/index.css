@@ -52,3 +52,11 @@ body { font-family: 'Space Grotesk', sans-serif; color: #e8eae0; }
   50%      { opacity: 0.85; }
 }
 @media (prefers-reduced-motion: reduce) { .star { animation: none; } }
+
+/* hero portrait keeps a gentle life even with no pointer (mobile has no cursor) */
+.portrait-float { animation: portrait-bob 6s ease-in-out infinite; }
+@keyframes portrait-bob {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-10px) rotate(-1deg); }
+}
+@media (prefers-reduced-motion: reduce) { .portrait-float { animation: none; } }

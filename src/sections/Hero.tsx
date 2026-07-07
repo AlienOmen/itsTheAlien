@@ -48,7 +48,7 @@ export function Hero() {
                       w-[260px] sm:w-[330px] md:w-[400px] lg:w-[460px]">
         <FadeIn delay={0.6} y={30}>
           <Magnet boundsRef={heroRef} strength={4} maxTravel={170}>
-            <img src="/portrait.png" alt="Ahmed Al Badry — 3D portrait" className="w-full drop-shadow-[0_30px_60px_rgba(0,0,0,0.75)]" />
+            <img src="/portrait.png" alt="Ahmed Al Badry — 3D portrait" className="portrait-float w-full drop-shadow-[0_30px_60px_rgba(0,0,0,0.75)]" />
           </Magnet>
         </FadeIn>
       </div>

@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 
 interface Props {
   children: ReactNode;
-  /** activation container: the magnet follows the cursor anywhere inside this element.
+  /** activation container: the magnet follows the pointer anywhere inside this element.
       Defaults to the whole viewport so the portrait roams the full hero. */
   boundsRef?: RefObject<HTMLElement | null>;
   /** larger = less travel. */
@@ -21,14 +21,14 @@ export function Magnet({ children, boundsRef, strength = 5, maxTravel = 140, cla
   const [active, setActive] = useState(false);
 
   useEffect(() => {
-    const onMove = (e: MouseEvent) => {
+    const moveTo = (clientX: number, clientY: number) => {
       const el = ref.current;
       if (!el) return;
       const bounds = boundsRef?.current ?? document.documentElement;
       const b = bounds.getBoundingClientRect();
       const inside =
-        e.clientX >= b.left && e.clientX <= b.right &&
-        e.clientY >= b.top && e.clientY <= b.bottom;
+        clientX >= b.left && clientX <= b.right &&
+        clientY >= b.top && clientY <= b.bottom;
       if (!inside) {
         setActive(false);
         setOffset({ x: 0, y: 0 });
@@ -39,12 +39,25 @@ export function Magnet({ children, boundsRef, strength = 5, maxTravel = 140, cla
       const cy = r.top + r.height / 2;
       setActive(true);
       setOffset({
-        x: clamp((e.clientX - cx) / strength, maxTravel),
-        y: clamp((e.clientY - cy) / strength, maxTravel),
+        x: clamp((clientX - cx) / strength, maxTravel),
+        y: clamp((clientY - cy) / strength, maxTravel),
       });
     };
-    window.addEventListener('mousemove', onMove, { passive: true });
-    return () => window.removeEventListener('mousemove', onMove);
+    const reset = () => { setActive(false); setOffset({ x: 0, y: 0 }); };
+
+    const onMouse = (e: MouseEvent) => moveTo(e.clientX, e.clientY);
+    const onTouch = (e: TouchEvent) => { const t = e.touches[0]; if (t) moveTo(t.clientX, t.clientY); };
+
+    window.addEventListener('mousemove', onMouse, { passive: true });
+    window.addEventListener('touchmove', onTouch, { passive: true });
+    window.addEventListener('touchend', reset, { passive: true });
+    window.addEventListener('touchcancel', reset, { passive: true });
+    return () => {
+      window.removeEventListener('mousemove', onMouse);
+      window.removeEventListener('touchmove', onTouch);
+      window.removeEventListener('touchend', reset);
+      window.removeEventListener('touchcancel', reset);
+    };
   }, [boundsRef, strength, maxTravel]);
 
   return (
