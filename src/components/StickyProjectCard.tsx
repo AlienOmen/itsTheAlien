@@ -28,11 +28,11 @@ export function StickyProjectCard({ project, index, total, progress, onOpen }: P
           alt={project.title}
           className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
-        {/* legibility gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-void via-void/40 to-transparent" />
+        {/* legibility gradient — darkens the top where the copy sits */}
+        <div className="absolute inset-0 bg-gradient-to-b from-void via-void/50 to-transparent" />
 
-        <div className="relative flex h-full flex-col justify-between p-6 sm:p-8 md:p-10">
-          {/* project name at the TOP */}
+        {/* all project data anchored at the TOP */}
+        <div className="relative flex h-full flex-col p-6 sm:p-8 md:p-10">
           <div className="flex items-start justify-between gap-4">
             <div className="flex items-start gap-4 sm:gap-6">
               <span className="hero-heading font-display font-black leading-none drop-shadow-lg"
@@ -44,6 +44,7 @@ export function StickyProjectCard({ project, index, total, progress, onOpen }: P
                 <h3 className="mt-1 font-display uppercase leading-none drop-shadow-lg" style={{ fontSize: 'clamp(1.5rem, 3.6vw, 3rem)' }}>
                   {project.title}
                 </h3>
+                <p className="mt-2 font-mono text-xs uppercase tracking-widest text-acid">{project.result}</p>
               </div>
             </div>
             <span className="shrink-0 flex h-12 w-12 items-center justify-center rounded-full border-2 border-bone/70 text-bone
@@ -52,14 +53,11 @@ export function StickyProjectCard({ project, index, total, progress, onOpen }: P
             </span>
           </div>
 
-          <div>
-            <p className="font-mono text-xs uppercase tracking-widest text-acid">{project.result}</p>
-            <p className="mt-3 max-w-xl font-body text-sm leading-relaxed text-bone/80">{project.desc}</p>
-            <span className="mt-5 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.3em] text-bone
-                             transition-colors group-hover:text-acid">
-              View Case Study <ArrowUpRight className="h-3.5 w-3.5" />
-            </span>
-          </div>
+          <p className="mt-4 max-w-xl font-body text-sm leading-relaxed text-bone/80 drop-shadow-md">{project.desc}</p>
+          <span className="mt-5 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.3em] text-bone
+                           transition-colors group-hover:text-acid">
+            View Case Study <ArrowUpRight className="h-3.5 w-3.5" />
+          </span>
         </div>
       </motion.button>
     </div>
