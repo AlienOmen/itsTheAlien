@@ -14,10 +14,12 @@ export function StickyProjectCard({ project, index, total, progress, onOpen }: P
   const targetScale = 1 - (total - 1 - index) * 0.03;
   const scale = useTransform(progress, [index / total, 1], [1, targetScale]);
 
+  // shorter-than-viewport card, pinned high, so the whole card (incl. footer)
+  // is fully visible with clearance before the next card rises to cover it —
+  // no empty gap between cards (they stay contiguous in the flow).
   return (
     <div
-      className="mb-[30vh]"
-      style={{ position: 'sticky', top: `calc(5rem + ${index * 24}px)`, height: '80vh' }}
+      style={{ position: 'sticky', top: `calc(5vh + ${index * 22}px)`, height: '72vh' }}
     >
       <motion.button
         type="button"
