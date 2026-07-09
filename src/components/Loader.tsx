@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useContent } from '../i18n/useContent';
 
 const SHOW_AFTER_MS = 250;   // don't appear at all for fast/cached loads
 const MIN_VISIBLE_MS = 700;  // once shown, hold long enough not to blink
@@ -6,6 +7,7 @@ const MAX_WAIT_MS = 4000;    // never hold the page hostage
 
 export function Loader() {
   const [phase, setPhase] = useState<'pending' | 'visible' | 'fading' | 'done'>('pending');
+  const { ui } = useContent();
 
   useEffect(() => {
     let shownAt = 0;
@@ -52,7 +54,7 @@ export function Loader() {
         <span className="loader-ping absolute inset-0 rounded-full border border-acid/60" />
         <img src="/brand/logo-mark.png" alt="" className="h-10 w-auto" />
       </div>
-      <p className="loader-dots font-mono text-xs uppercase tracking-[0.4em] text-ash">Receiving transmission</p>
+      <p className="loader-dots font-mono text-xs uppercase tracking-[0.4em] text-ash">{ui.loaderText}</p>
     </div>
   );
 }

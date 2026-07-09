@@ -8,9 +8,10 @@ interface Props {
   total: number;
   progress: MotionValue<number>;
   onOpen: (slug: string) => void;
+  ctaLabel: string;
 }
 
-export function StickyProjectCard({ project, index, total, progress, onOpen }: Props) {
+export function StickyProjectCard({ project, index, total, progress, onOpen, ctaLabel }: Props) {
   const targetScale = 1 - (total - 1 - index) * 0.03;
   const scale = useTransform(progress, [index / total, 1], [1, targetScale]);
 
@@ -63,7 +64,7 @@ export function StickyProjectCard({ project, index, total, progress, onOpen }: P
           <p className="line-clamp-2 max-w-xl font-body text-sm leading-relaxed text-bone/75">{project.desc}</p>
           <span className="shrink-0 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.3em] text-bone
                            transition-colors group-hover:text-acid">
-            View Case Study <ArrowUpRight className="h-3.5 w-3.5" />
+            {ctaLabel} <ArrowUpRight className="h-3.5 w-3.5" />
           </span>
         </div>
       </motion.button>

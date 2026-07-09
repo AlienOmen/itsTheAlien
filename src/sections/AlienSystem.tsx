@@ -1,16 +1,17 @@
 import { FadeIn } from '../components/FadeIn';
-import { programs, acronym } from '../data/alienSystem';
+import { useContent } from '../i18n/useContent';
 
 export function AlienSystem() {
+  const { programs, acronym, ui } = useContent();
   return (
     <section id="system" className="relative z-10 -mt-10 rounded-t-[40px] bg-void px-5 py-20 sm:-mt-12 sm:rounded-t-[50px] sm:px-8 sm:py-24 md:-mt-14 md:rounded-t-[60px] md:px-10 md:py-32">
       <FadeIn y={40}>
         <h2 className="text-center font-display font-black uppercase leading-none"
             style={{ fontSize: 'clamp(2.5rem, 9vw, 120px)' }}>
-          The <span className="text-acid">A.L.I.E.N.</span> System
+          {ui.systemHeadA} <span className="text-acid">{ui.systemHeadAccent}</span> {ui.systemHeadB}
         </h2>
         <p className="mx-auto mt-6 max-w-[580px] text-center font-body text-ash">
-          Two programs. One transformation — from designer to impact-driven creative authority.
+          {ui.systemSubtitle}
         </p>
       </FadeIn>
       <div className="mx-auto mt-16 grid max-w-6xl gap-8 md:grid-cols-2">

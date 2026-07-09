@@ -1,13 +1,14 @@
 import { FadeIn } from '../components/FadeIn';
-import { services } from '../data/expertise';
+import { useContent } from '../i18n/useContent';
 
 export function Expertise() {
+  const { services, ui } = useContent();
   return (
     <section id="expertise" className="relative z-0 rounded-t-[40px] bg-bone px-5 py-20 text-void sm:rounded-t-[50px] sm:px-8 sm:py-24 md:rounded-t-[60px] md:px-10 md:py-32">
       <FadeIn y={40}>
         <h2 className="mb-16 text-center font-display font-black uppercase leading-none sm:mb-20 md:mb-28"
             style={{ fontSize: 'clamp(3rem, 12vw, 160px)' }}>
-          Expertise
+          {ui.expertiseHeading}
         </h2>
       </FadeIn>
       <div className="mx-auto max-w-5xl">

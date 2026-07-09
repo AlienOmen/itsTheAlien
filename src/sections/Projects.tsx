@@ -3,13 +3,13 @@ import { useScroll, AnimatePresence } from 'framer-motion';
 import { FadeIn } from '../components/FadeIn';
 import { StickyProjectCard } from '../components/StickyProjectCard';
 import { CaseStudyOverlay } from '../components/CaseStudyOverlay';
-import { projects } from '../data/projects';
-import { caseStudies, moreWork } from '../data/caseStudies';
+import { useContent } from '../i18n/useContent';
 
 export function Projects() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end end'] });
   const [activeSlug, setActiveSlug] = useState<string | null>(null);
+  const { projects, caseStudies, moreWork, ui } = useContent();
   const active = caseStudies.find((c) => c.slug === activeSlug) ?? null;
 
   return (
@@ -19,19 +19,19 @@ export function Projects() {
           className="hero-heading mb-16 text-center font-display font-black uppercase leading-none"
           style={{ fontSize: 'clamp(3rem, 12vw, 160px)' }}
         >
-          Projects
+          {ui.projectsHeading}
         </h2>
       </FadeIn>
       <div ref={ref}>
         {projects.map((p, i) => (
           <StickyProjectCard key={p.num} project={p} index={i} total={projects.length}
-                             progress={scrollYProgress} onOpen={setActiveSlug} />
+                             progress={scrollYProgress} onOpen={setActiveSlug} ctaLabel={ui.viewCaseStudy} />
         ))}
       </div>
 
       <div className="mx-auto mt-24 max-w-5xl">
         <FadeIn y={30}>
-          <p className="mb-10 text-center font-mono text-sm uppercase tracking-[0.3em] text-ash">More Work</p>
+          <p className="mb-10 text-center font-mono text-sm uppercase tracking-[0.3em] text-ash">{ui.moreWorkHeading}</p>
         </FadeIn>
         <div className="grid gap-6 md:grid-cols-3">
           {moreWork.map((w, i) => (

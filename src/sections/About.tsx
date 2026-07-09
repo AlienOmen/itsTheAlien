@@ -3,7 +3,7 @@ import { useInView } from 'framer-motion';
 import { FadeIn } from '../components/FadeIn';
 import { AnimatedText } from '../components/AnimatedText';
 import { ContactButton } from '../components/ContactButton';
-import { copy } from '../data/copy';
+import { useContent } from '../i18n/useContent';
 
 function CountUp({ target, suffix }: { target: number; suffix: string }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -32,6 +32,7 @@ const DECOS = [
 ];
 
 export function About() {
+  const { copy } = useContent();
   return (
     <section id="about" className="relative flex min-h-screen flex-col items-center justify-center gap-10 px-5 py-20 sm:gap-14 sm:px-8 md:gap-16 md:px-10">
       {DECOS.map((d) => (

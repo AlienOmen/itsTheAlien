@@ -3,30 +3,35 @@ import { FadeIn } from '../components/FadeIn';
 import { Magnet } from '../components/Magnet';
 import { ContactButton } from '../components/ContactButton';
 import { Starfield } from '../components/Starfield';
-import { copy } from '../data/copy';
-
-const NAV = [
-  { label: 'About', href: '#about' },
-  { label: 'System', href: '#system' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Contact', href: '#contact' },
-];
+import { LanguageSwitcher } from '../i18n/LanguageSwitcher';
+import { useContent } from '../i18n/useContent';
 
 export function Hero() {
   const heroRef = useRef<HTMLElement>(null);
+  const { copy, ui } = useContent();
+  const NAV = [
+    { label: ui.nav.about, href: '#about' },
+    { label: ui.nav.system, href: '#system' },
+    { label: ui.nav.projects, href: '#projects' },
+    { label: ui.nav.contact, href: '#contact' },
+  ];
+
   return (
     <section ref={heroRef} className="relative flex h-screen flex-col" style={{ overflowX: 'clip' }}>
       <Starfield />
       <FadeIn delay={0} y={-20}>
         <nav className="flex items-center justify-between px-6 pt-6 md:px-10 md:pt-8">
           <a href="#top"><img src="/brand/logo-mark.png" alt="it's The Alien" className="h-9 w-auto md:h-11" /></a>
-          <div className="flex gap-6 md:gap-10">
-            {NAV.map((n) => (
-              <a key={n.label} href={n.href}
-                 className="font-mono text-sm font-medium uppercase tracking-wider text-bone/90 transition-opacity duration-200 hover:opacity-70 md:text-lg">
-                {n.label}
-              </a>
-            ))}
+          <div className="flex items-center gap-5 md:gap-9">
+            <div className="hidden gap-5 sm:flex md:gap-9">
+              {NAV.map((n) => (
+                <a key={n.href} href={n.href}
+                   className="font-mono text-sm font-medium uppercase tracking-wider text-bone/90 transition-opacity duration-200 hover:opacity-70 md:text-lg">
+                  {n.label}
+                </a>
+              ))}
+            </div>
+            <LanguageSwitcher className="md:text-base" />
           </div>
         </nav>
       </FadeIn>
@@ -41,9 +46,7 @@ export function Hero() {
         </FadeIn>
       </div>
 
-      {/* portrait floats IN FRONT of the type, chasing the cursor.
-          positioning lives on a static wrapper: FadeIn (motion.div) animates
-          transform and would overwrite class-based translate centering */}
+      {/* portrait floats IN FRONT of the type, chasing the cursor / touch */}
       <div className="absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-[42%]
                       w-[260px] sm:w-[330px] md:w-[400px] lg:w-[460px]">
         <FadeIn delay={0.6} y={30}>
@@ -61,7 +64,7 @@ export function Hero() {
             {copy.heroTagline}
           </p>
         </FadeIn>
-        <FadeIn delay={0.5} y={20}><ContactButton /></FadeIn>
+        <FadeIn delay={0.5} y={20}><ContactButton label={ui.contactMe} /></FadeIn>
       </div>
     </section>
   );
